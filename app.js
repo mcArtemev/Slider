@@ -10,16 +10,20 @@ let activeSlideIndex = 0;
 
 sidebar.style.top = `-${(slidesCount-1) * 100}vh`;
 
-upBtn.addEventListener('click',() => {
+upBtn.addEventListener('click', () => {
     changeSlide('up');
 });
-downBtn.addEventListener('click',() => {
+downBtn.addEventListener('click', () => {
     changeSlide('down');
 });
 
-document.addEventListener('scroll',() => {
-    changeSlide()
-})
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowUp') {
+        changeSlide('up');
+    } else if (e.key === 'ArrowDown') {
+        changeSlide('down');
+    }
+});
 
 function changeSlide(direction) {
     if (direction === 'up') {
